@@ -1,9 +1,9 @@
 require 'rspec_helper'
 
 describe Intercon::Filter do
-  let(:dublin) { { lat: 53.339428, lng: -6.257664 } }
-  let(:customer_4) { { lat: 53.2451022 , lng: -6.238335 } }
-  let(:customer_21) { { lat: 51.802, lng: -9.442 } }
+  let(:dublin) { { latitude: 53.339428, longitude: -6.257664 } }
+  let(:customer_4) { { latitude: 53.2451022 , longitude: -6.238335 } }
+  let(:customer_21) { { latitude: 51.802, longitude: -9.442 } }
   let(:distance_km) { 100 }
   subject { described_class.new(dublin, distance_km) }
 
@@ -21,13 +21,13 @@ describe Intercon::Filter do
     context 'calculate the distance from Dublin to customer 4 on Earth that is less than 100 KM' do
       let(:result) { 10.566936288868758 }
 
-      it { expect(subject.calculate_distance(dublin[:lat], dublin[:lng], customer_4[:lat], customer_4[:lng])).to eq(result) }
+      it { expect(subject.calculate_distance(dublin[:latitude], dublin[:longitude], customer_4[:latitude], customer_4[:longitude])).to eq(result) }
     end
 
     context 'calculate the distance from Dublin to customer 21 on Earth that is greater than 100 KM' do
       let(:result) { 274.79780021881373 }
 
-      it { expect(subject.calculate_distance(dublin[:lat], dublin[:lng], customer_21[:lat], customer_21[:lng])).to eq(result) }
+      it { expect(subject.calculate_distance(dublin[:latitude], dublin[:longitude], customer_21[:latitude], customer_21[:longitude])).to eq(result) }
     end
   end
 

@@ -68,30 +68,8 @@ describe Intercon::InviteCustomer do
           {"latitude": "53.0033946", "user_id": 39, "name": "Lisa Ahearn", "longitude": "-6.3877505"}
         ]
       end
-      let(:print_customer_list) do
-        <<~EOF
-          4 - Ian Kehoe
-          5 - Nora Dempsey
-          6 - Theresa Enright
-          8 - Eoin Ahearn
-          11 - Richard Finnegan
-          12 - Christina McArdle
-          13 - Olive Ahearn
-          15 - Michael Ahearn
-          17 - Patricia Cahill
-          23 - Eoin Gallagher
-          24 - Rose Enright
-          26 - Stephen McArdle
-          29 - Oliver Ahearn
-          30 - Nick Enright
-          31 - Alan Behan
-          39 - Lisa Ahearn
-        EOF
-      end
 
       it { expect(subject.customers_invited).to eq(filtered_customers) }
-
-      it { expect(subject.print_customers(filtered_customers)).to eq(print_customer_list) }
     end
 
     context 'when file doesn`t have customer that match criteria for invitaion' do

@@ -9,12 +9,8 @@ module Intercon
       @filter = filter
     end
 
-    def print_customers(customers)
-      p customers.map { |c| "#{c[:user_id]} - #{c[:name]}" }.join("\n") + "\n"
-    end
-
     def customers_invited
-      filter_by_distance(customer_list)
+      filter_by_distance(customer_list).sort_by { |c| c[:user_id] }
     end
 
     def customer_list

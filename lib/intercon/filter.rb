@@ -10,7 +10,7 @@ module Intercon
     end
 
     def filter_by_distance(customers)
-      customers.select { |c| calculate_distance(c[:lat], c[:lng], point[:lat], point[:lng]) <= distance }
+      customers.select { |c| calculate_distance(c[:latitude], c[:longitude], point[:latitude], point[:longitude]) <= distance }
     end
 
     def calculate_distance(lat_a, lng_a, lat_b, lng_b)
