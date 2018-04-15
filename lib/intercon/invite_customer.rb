@@ -2,10 +2,11 @@ module Intercon
   class InviteCustomer
     DISTANCE_KM = 100
 
-    attr_reader :file_name
+    attr_reader :customer_model, :filter
 
-    def initialize(file_name)
-      @file_name = file_name
+    def initialize(customer_model, filter)
+      @customer_model = customer_model
+      @filter = filter
     end
 
     def print_customers(customers)
@@ -13,15 +14,15 @@ module Intercon
     end
 
     def customers_invited
-      filter_by_distance(customer_list(file_name), DISTANCE_KM)
+      filter_by_distance(customer_list)
     end
 
     def customer_list
-      []
+      customer_model.customer_list
     end
 
-    def filter_by_distance(loc, d)
-      []
+    def filter_by_distance(loc)
+      filter.filter_by_distance(loc)
     end
   end
 end

@@ -2,12 +2,13 @@ require 'rspec_helper'
 
 describe Intercon::InviteCustomer do
   before do
-    allow(subject).to receive(:customer_list).and_return(customers)
-    allow(subject).to receive(:filter_by_distance).with(customers, distance).and_return(filtered_customers)
+    allow(customer_model).to receive(:customer_list).and_return(customers)
+    allow(filter).to receive(:filter_by_distance).with(customers).and_return(filtered_customers)
   end
-  let(:file) { 'customer.txt' }
-  let(:distance) { 100 } #km
-  subject { described_class.new file }
+  let(:file_name) { 'customer.txt' }
+  let(:customer_model) { instance_double('CustomerModel', customer_list: customers) }
+  let(:filter) { instance_double('Filter', filter_by_distance: filtered_customers) }
+  subject { described_class.new(customer_model, filter) }
 
   context 'filter customer to invitation' do
     context 'when file has customes that match criteria for invitation' do
