@@ -1,7 +1,5 @@
 module Intercon
   class InviteCustomer
-    DISTANCE_KM = 100
-
     attr_reader :customer_model, :filter
 
     def initialize(customer_model, filter)

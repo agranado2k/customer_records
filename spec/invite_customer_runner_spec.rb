@@ -1,5 +1,11 @@
 require 'rspec_helper'
 
+class FakeIO
+  def print(output)
+    output
+  end
+end
+
 describe Intercon::InviteCustomerRunner do
   let(:dublin) { { latitude: 53.339428, longitude: -6.257664 } }
   let(:distance) { 100 }
@@ -24,7 +30,7 @@ describe Intercon::InviteCustomerRunner do
       39 - Lisa Ahearn
     EOF
   end
-  subject { described_class.run(dublin, distance, file_name) }
+  subject { described_class.customer_records(dublin, distance, file_name, FakeIO.new) }
 
   it { expect(subject).to eq(print_list) }
 end

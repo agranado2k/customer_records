@@ -1,5 +1,11 @@
 require 'rspec_helper'
 
+class FakeIO
+  def print(output)
+    output
+  end
+end
+
 describe Intercon::CustomerModel do
   let(:customers) do
     [
@@ -40,21 +46,21 @@ describe Intercon::CustomerModel do
 
   context 'when there is no file' do
     let(:file_name) { 'invalid_file.txt' }
-    subject { described_class.new file_name }
+    subject { described_class.new(file_name, FakeIO.new) }
 
-    it { expect { subject.customer_list }.to raise_error RuntimeError }
+    it { expect { subject.customer_list }.to_not raise_error }
   end
 
   context 'when the file is empty' do
     let(:file_name) { './spec/fixture/empty_file.txt' }
-    subject { described_class.new file_name }
+    subject { described_class.new(file_name , FakeIO.new) }
 
     it { expect(subject.customer_list).to be_empty }
   end
 
   context 'when the file is not empty' do
     let(:file_name) { './spec/fixture/customers.txt' }
-    subject { described_class.new file_name }
+    subject { described_class.new(file_name, FakeIO.new) }
 
     it { expect(subject.customer_list).to eq(customers) }
   end

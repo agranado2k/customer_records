@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+require_relative '../lib/intercon'
+
+dublin = { latitude: 53.339428, longitude: -6.257664 }
+distance = ARGV[0].to_i
+distance = 100 if distance == 0
+file_name = ARGV[1] || "#{Dir.pwd}/data/customers.txt"
+
+Intercon::InviteCustomerRunner.customer_records(dublin, distance, file_name, Intercon::IO.new)

@@ -1,9 +1,10 @@
 module Intercon
   class CustomerModel
-    attr_reader :file_path
+    attr_reader :file_path, :io
 
-    def initialize(file_path)
+    def initialize(file_path, io)
       @file_path = file_path
+      @io = io
     end
 
     def customer_list
@@ -21,8 +22,9 @@ module Intercon
         customers << JSON.parse(line)
       end
       customers
-    rescue
-      raise RuntimeError.new "File not found - #{file_path}"
+    rescue Errno::ENOENT
+      io.print "File not found - #{file_path}"
+      customers
     end
   end
 end
