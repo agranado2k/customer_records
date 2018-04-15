@@ -14,26 +14,26 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-04-15T21:27:25+01:00">2018-04-15T21:27:25+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-04-15T21:34:21+01:00">2018-04-15T21:34:21+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">98.58%</span></span>
+    (<span class="covered_percent"><span class="green">98.56%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.57
+         5.64
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>11</b> files in total.
-    <b>141</b> relevant lines. 
-    <span class="green"><b>139</b> lines covered</span> and
+    <b>139</b> relevant lines. 
+    <span class="green"><b>137</b> lines covered</span> and
     <span class="red"><b>2</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -63,11 +63,11 @@
       <tr>
         <td class="strong"><a href="#589b094752a19c1d563055374abd9246fa3f790f" class="src_link" title="lib/intercon/customer_model.rb">lib/intercon/customer_model.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>30</td>
-        <td>19</td>
-        <td>19</td>
+        <td>27</td>
+        <td>17</td>
+        <td>17</td>
         <td>0</td>
-        <td>8.9</td>
+        <td>9.8</td>
       </tr>
       
       <tr>
@@ -278,8 +278,8 @@
     <h3>lib/intercon/customer_model.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>19</b> relevant lines. 
-      <span class="green"><b>19</b> lines covered</span> and
+      <b>17</b> relevant lines. 
+      <span class="green"><b>17</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -398,35 +398,35 @@
         <li class="covered" data-hits="4" data-linenumber="19">
           <span class="hits">4</span>
           
-          <code class="ruby">      text = File.open(file_path).read</code>
+          <code class="ruby">      text = File.open(file_path).read.gsub(/\r\n?/, &quot;\n&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="20">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="67" data-linenumber="20">
+          <span class="hits">67</span>
           
-          <code class="ruby">      text.gsub!(/\r\n?/, &quot;\n&quot;)</code>
+          <code class="ruby">      text.each_line { |line| customers &lt;&lt; JSON.parse(line) }</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="21">
           <span class="hits">3</span>
           
-          <code class="ruby">      text.each_line do |line|</code>
+          <code class="ruby">      customers</code>
         </li>
       
-        <li class="covered" data-hits="64" data-linenumber="22">
-          <span class="hits">64</span>
+        <li class="never" data-hits="" data-linenumber="22">
           
-          <code class="ruby">        customers &lt;&lt; JSON.parse(line)</code>
+          
+          <code class="ruby">    rescue Errno::ENOENT</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="23">
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">      end</code>
+          <code class="ruby">      io.print &quot;File not found - #{file_path}&quot;</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="24">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
           
           <code class="ruby">      customers</code>
         </li>
@@ -434,34 +434,16 @@
         <li class="never" data-hits="" data-linenumber="25">
           
           
-          <code class="ruby">    rescue Errno::ENOENT</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="26">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      io.print &quot;File not found - #{file_path}&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="27">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      customers</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="28">
-          
-          
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="29">
+        <li class="never" data-hits="" data-linenumber="26">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="30">
+        <li class="never" data-hits="" data-linenumber="27">
           
           
           <code class="ruby">end</code>
@@ -603,13 +585,13 @@
         <li class="covered" data-hits="37" data-linenumber="20">
           <span class="hits">37</span>
           
-          <code class="ruby">      a = Math.sin(d_lat/2)**2 + Math.cos(lat_a.to_rad) * Math.cos(lat_b.to_rad) * Math.sin(d_lng/2) ** 2</code>
+          <code class="ruby">      a = Math.sin(d_lat/2) ** 2 + Math.cos(lat_a.to_rad) * Math.cos(lat_b.to_rad) * Math.sin(d_lng / 2) ** 2</code>
         </li>
       
         <li class="covered" data-hits="37" data-linenumber="21">
           <span class="hits">37</span>
           
-          <code class="ruby">      d = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))</code>
+          <code class="ruby">      d = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))</code>
         </li>
       
         <li class="covered" data-hits="37" data-linenumber="22">

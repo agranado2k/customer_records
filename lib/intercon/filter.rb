@@ -17,8 +17,8 @@ module Intercon
       d_lat = (lat_a - lat_b).to_rad
       d_lng = (lng_a - lng_b).to_rad
 
-      a = Math.sin(d_lat/2)**2 + Math.cos(lat_a.to_rad) * Math.cos(lat_b.to_rad) * Math.sin(d_lng/2) ** 2
-      d = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+      a = Math.sin(d_lat/2) ** 2 + Math.cos(lat_a.to_rad) * Math.cos(lat_b.to_rad) * Math.sin(d_lng / 2) ** 2
+      d = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
       d * EARTH_RADIUS_KM
     end
   end

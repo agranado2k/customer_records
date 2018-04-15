@@ -16,11 +16,8 @@ module Intercon
 
     def load_file
       customers = []
-      text = File.open(file_path).read
-      text.gsub!(/\r\n?/, "\n")
-      text.each_line do |line|
-        customers << JSON.parse(line)
-      end
+      text = File.open(file_path).read.gsub(/\r\n?/, "\n")
+      text.each_line { |line| customers << JSON.parse(line) }
       customers
     rescue Errno::ENOENT
       io.print "File not found - #{file_path}"
